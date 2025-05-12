@@ -14,7 +14,7 @@ const App = () => {
     if (typeof window !== "undefined" && window.localStorage) {
       return localStorage.getItem("theme") || "light";
     }
-    return "light";
+    return "dark";
   });
 
   useEffect(() => {

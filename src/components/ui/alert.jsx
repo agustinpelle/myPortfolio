@@ -1,0 +1,51 @@
+import * as React from "react";
+import { cva } from "class-variance-authority";
+
+// Removed import of cn from non-existent lib/utils
+// You may need to add a utility function for classNames if needed
+
+const alertVariants = cva(
+  "relative w-full rounded-lg border p-4 [&>svg~*]:pl-7 [&>svg+div]:translate-y-[-3px] [&>svg]:absolute [&>svg]:left-4 [&>svg]:top-4 [&>svg]:text-foreground",
+  {
+    variants: {
+      variant: {
+        default: "bg-background text-foreground",
+        destructive:
+          "border-destructive/50 text-destructive dark:border-destructive [&>svg]:text-destructive",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+const Alert = React.forwardRef(({ className, variant, ...props }, ref) => (
+  <div
+    ref={ref}
+    role="alert"
+    className={alertVariants({ variant }) + " " + (className || "")}
+    {...props}
+  />
+));
+Alert.displayName = "Alert";
+
+const AlertTitle = React.forwardRef(({ className, ...props }, ref) => (
+  <h5
+    ref={ref}
+    className={"mb-1 font-medium leading-none tracking-tight " + (className || "")}
+    {...props}
+  />
+));
+AlertTitle.displayName = "AlertTitle";
+
+const AlertDescription = React.forwardRef(({ className, ...props }, ref) => (
+  <div
+    ref={ref}
+    className={"text-sm [&_p]:leading-relaxed " + (className || "")}
+    {...props}
+  />
+));
+AlertDescription.displayName = "AlertDescription";
+
+export { Alert, AlertTitle, AlertDescription };

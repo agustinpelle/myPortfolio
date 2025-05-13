@@ -62,23 +62,23 @@ const ContactSection = () => {
     <section className="py-20 px-4" id="contact">
       <div className="max-w-6xl mx-auto space-y-12">
         <div className="text-center space-y-4">
-          <h2 className="text-3xl md:text-4xl font-bold">Get In Touch</h2>
+          <h2 className="text-3xl md:text-4xl font-bold">Contactame</h2>
           <p className="text-slate-600 max-w-2xl mx-auto">
-            Have a project in mind? Let's discuss how we can work together.
+            Si tenes algun proyecto en mente lo podemos charlar.
           </p>
         </div>
         <Card className="max-w-xl mx-auto p-6">
           <form className="space-y-6" onSubmit={handleSubmit} noValidate>
             <div className="space-y-2">
               <label className="text-sm font-medium" htmlFor="name">
-                Name
+                Nombre
               </label>
               <div className="relative">
                 <User className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5" />
                 <Input
                   id="name"
                   className="pl-10"
-                  placeholder="Your name"
+                  placeholder="Tu nombre"
                   value={formData.name}
                   onChange={handleChange}
                   aria-invalid={errors.name ? "true" : "false"}
@@ -101,7 +101,7 @@ const ContactSection = () => {
                   id="email"
                   type="email"
                   className="pl-10"
-                  placeholder="your@email.com"
+                  placeholder="ejemplo@gmail.com"
                   value={formData.email}
                   onChange={handleChange}
                   aria-invalid={errors.email ? "true" : "false"}
@@ -116,11 +116,11 @@ const ContactSection = () => {
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium" htmlFor="message">
-                Message
+                Mensaje
               </label>
               <Textarea
                 id="message"
-                placeholder="Your message"
+                placeholder=""
                 className="min-h-[120px]"
                 value={formData.message}
                 onChange={handleChange}
@@ -134,11 +134,11 @@ const ContactSection = () => {
               )}
             </div>
             <Button className="w-full" type="submit">
-              Send Message
+              Enviar
             </Button>
             {submitted && (
               <p className="text-green-500 text-center mt-4">
-                Thank you for your message! I will get back to you soon.
+                Gracias por tu mensaje, estamos en contacto.
               </p>
             )}
             {submitError && (

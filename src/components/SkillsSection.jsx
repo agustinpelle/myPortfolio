@@ -5,17 +5,17 @@ const skills = [
   {
     category: "Frontend",
     icon: Layout,
-    items: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Redux"],
+    items: ["React", "JavaScript", "Tailwind CSS", "Bootstrap"],
   },
   {
     category: "Backend",
     icon: Code,
-    items: ["Node.js", "Python", "PostgreSQL", "MongoDB", "GraphQL"],
+    items: ["Node.js", "Python", , "MongoDB", "Django"],
   },
   {
     category: "Other",
     icon: Star,
-    items: ["Git", "Docker", "AWS", "CI/CD", "Testing"],
+    items: ["GIT", "Pentesting", "Linux",],
   },
 ];
 
@@ -28,10 +28,10 @@ const SkillsSection = () => {
       <div className="max-w-6xl mx-auto space-y-12 relative">
         <div className="text-center space-y-4">
           <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
-            Skills & Technologies
+            Habilidades & Tecnologías
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            A collection of technologies and tools I use to bring ideas to life.
+            Estas son las tecnologías y herramientas que manejo. Siempre estoy aprendiendo y mejorando mis habilidades.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

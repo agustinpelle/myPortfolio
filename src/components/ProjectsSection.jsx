@@ -9,23 +9,23 @@ const projects = [
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     techStack: ["React", "Node.js", "JavaScript"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/arcv1337/BuyOrNot",
   },
   {
     title: "Portafolio",
     description: "Un portafolio interactivo que muestra mis habilidades técnicas y proyectos. Es esta página web. ",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-    techStack: ["JavaScript", "Tailwind CSS", "React"],
+    image: "/public/portfolio.jpg",
+    techStack: ["JavaScript", "Tailwind CSS", "React", "Node.js"],
     demoLink: "#",
-    githubLink: "#",
+    githubLink: "https://github.com/arcv1337//",
   },
   {
     title: "Distribuidora La Pluma",
     description: "Distribuidora de productos de ferreteria y repuestos para autos originales. Permite ver el catalogo de productos y realizar pedidos",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    image: "/public/la-pluma.jpg",
     techStack: ["JavaScript", "React",],
-    demoLink: "#",
-    githubLink: "#",
+    demoLink: "https://distribuidoralapluma.netlify.app",
+    githubLink: "https://github.com/arcv1337/laPluma-distribuidora",
   },
 ];
 
@@ -49,7 +49,7 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section className="pt-40 pb-20 px-4 relative min-h-screen" id="projects">
+    <section className="pt-45 pb-20 px-4 relative min-h-screen" id="projects">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#2979FF]/5 via-transparent to-transparent blur-xl" />
       <div className={`max-w-6xl mx-auto space-y-16 relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
         <div className="text-center space-y-6">

@@ -4,7 +4,7 @@ import { Github, Link } from "lucide-react";
 import { useState } from "react";
 import Modal from "./ui/modal";
 
-const ProjectCard = ({ title, description, image, techStack, demoLink, githubLink }) => {
+const ProjectCard = ({ title, description, image, techStack, demoLink, githubLink, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,19 +17,28 @@ const ProjectCard = ({ title, description, image, techStack, demoLink, githubLin
         className="overflow-hidden transition-all duration-300 bg-[#1E1E2F]/50 border-[#B388EB]/20 hover:border-[#8EAAF8] cursor-default"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        // Removed onClick to disable card click effect
       >
         <div className="relative overflow-hidden aspect-video">
           <img
             src={image}
             alt={title}
-            className={`object-cover w-full h-full transition-transform duration-500 ${isHovered ? 'scale-110' : 'scale-100'}`}
+            className={`object-center w-full h-full transform transition-transform duration-500 ${
+              isHovered ? 'scale-105' : 'scale-100'
+            }}`} // Desplaza horizontalmente solo el tercer card
           />
-          <div className={`absolute inset-0 bg-gradient-to-t from-[#1E1E2F] to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-90' : 'opacity-70'}`} />
+          <div
+            className={`absolute inset-0 bg-gradient-to-t from-[#1E1E2F] to-transparent transition-opacity duration-300 ${
+              isHovered ? 'opacity-90' : 'opacity-70'
+            }`}
+          />
         </div>
+
         <CardHeader>
-          <CardTitle className="text-xl font-semibold bg-gradient-to-r from-[#B388EB] to-[#8EAAF8] bg-clip-text text-transparent">{title}</CardTitle>
+          <CardTitle className="text-xl font-semibold bg-gradient-to-r from-[#B388EB] to-[#8EAAF8] bg-clip-text text-transparent">
+            {title}
+          </CardTitle>
         </CardHeader>
+
         <CardContent className="space-y-4">
           <p className="text-[#EAEAEA]">{description}</p>
           <div className="flex flex-wrap gap-2">
@@ -43,6 +52,7 @@ const ProjectCard = ({ title, description, image, techStack, demoLink, githubLin
             ))}
           </div>
         </CardContent>
+
         <CardFooter className="gap-4">
           <Button asChild className="gap-2 bg-[#FFB6C1] hover:bg-[#FF9AAF] text-[#1E1E2F] transition-all duration-300 font-medium shadow-lg shadow-[#FFB6C1]/20">
             <a href={demoLink} target="_blank" rel="noopener noreferrer" onClick={e => e.stopPropagation()}>

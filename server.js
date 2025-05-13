@@ -1,6 +1,9 @@
-const express = require('express');
-const cors = require('cors');
-const nodemailer = require('nodemailer');
+import express from 'express';
+import cors from 'cors';
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -9,12 +12,14 @@ app.use(cors());
 app.use(express.json());
 
 const transporter = nodemailer.createTransport({
-  host: 'smtp.office365.com',
-  port: 587,
-  secure: false,
+  service: 'gmail',
   auth: {
-    user: 'agustinpelle@hotmail.com',
-    pass: 'agustin42114698',
+    type: 'OAuth2',
+    user: process.env.EMAIL_USER,
+    clientId: process.env.OAUTH_CLIENT_ID,
+    clientSecret: process.env.OAUTH_CLIENT_SECRET,
+    refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+    accessToken: process.env.OAUTH_ACCESS_TOKEN,
   },
 });
 
@@ -27,7 +32,7 @@ app.post('/contact', async (req, res) => {
 
   const mailOptions = {
     from: `"${name}" <${email}>`,
-    to: 'agustinpelle@hotmail.com',
+    to: process.env.EMAIL_USER,
     subject: `New contact form submission from ${name}`,
     text: message,
     html: `<p>${message}</p><p>From: ${name} (${email})</p>`,

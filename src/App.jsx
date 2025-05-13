@@ -12,7 +12,7 @@ const queryClient = new QueryClient();
 const App = () => {
   const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined" && window.localStorage) {
-      return localStorage.getItem("theme") || "dark";
+      return localStorage.getItem("theme") || "light";
     }
     return "light";
   });

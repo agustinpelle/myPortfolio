@@ -4,26 +4,26 @@ import ProjectCard from "./ProjectCard";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A full-featured e-commerce solution with cart management and secure payments.",
+    title: "Buy Or Not",
+    description: "Proyecto basado en acciones argentinas y criptomonedas en alza, permite ver el precio de las acciones y criptomonedas en tiempo real.",
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
-    techStack: ["React", "Node.js", "MongoDB", "Stripe"],
+    techStack: ["React", "Node.js", "JavaScript"],
     demoLink: "#",
     githubLink: "#",
   },
   {
-    title: "Task Management App",
-    description: "A collaborative task management tool with real-time updates.",
+    title: "Portafolio",
+    description: "Un portafolio interactivo que muestra mis habilidades técnicas y proyectos. Es esta página web. ",
     image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
-    techStack: ["TypeScript", "Next.js", "PostgreSQL", "WebSocket"],
+    techStack: ["JavaScript", "Tailwind CSS", "React"],
     demoLink: "#",
     githubLink: "#",
   },
   {
-    title: "AI Image Generator",
-    description: "An AI-powered image generation tool using state-of-the-art models.",
+    title: "Distribuidora La Pluma",
+    description: "Distribuidora de productos de ferreteria y repuestos para autos originales. Permite ver el catalogo de productos y realizar pedidos",
     image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
-    techStack: ["Python", "React", "TensorFlow", "AWS"],
+    techStack: ["JavaScript", "React",],
     demoLink: "#",
     githubLink: "#",
   },
@@ -54,10 +54,10 @@ const ProjectsSection = () => {
       <div className={`max-w-6xl mx-auto space-y-16 relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
         <div className="text-center space-y-6">
           <h2 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#7FDBFF] to-white">
-            Featured Projects
+            Proyectos
           </h2>
           <p className="text-[#B0BEC5] max-w-2xl mx-auto text-lg">
-            Here are some of my recent projects that showcase my technical skills and problem-solving abilities.
+            Aca están algunos de mis proyectos recientes que muestran mis habilidades técnicas.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -66,7 +66,10 @@ const ProjectsSection = () => {
               key={project.title}
               className={`transition-all duration-1000 delay-${index * 200} ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'
-              }`}
+              } ${index === 1 ? 'scale-110 shadow-inner' : ''}
+              ${index === 0 ? 'scale-92 shadow-md' : ''}
+              ${index === 2 ? 'scale-100 shadow-md' : ''}
+              `}
             >
               <ProjectCard {...project} />
             </div>

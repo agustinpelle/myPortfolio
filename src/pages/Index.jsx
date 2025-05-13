@@ -67,7 +67,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-[#1E1E2F]">
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#B388EB]/10 via-transparent to-transparent blur-xl" />
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#B388EB]/10 via-transparent to-transparent blur-xl" />
         {/* Floating stars */}
         <div className="fixed inset-0 pointer-events-none">
           {[...Array(20)].map((_, i) => (

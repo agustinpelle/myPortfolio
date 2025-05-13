@@ -13,6 +13,7 @@ const ContactSection = () => {
   });
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const validate = () => {
     const newErrors = {};
@@ -31,12 +32,30 @@ const ContactSection = () => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSubmitError(null);
     if (!validate()) return;
-    // Here you can add actual submission logic (e.g., API call)
-    setSubmitted(true);
-    setFormData({ name: "", email: "", message: "" });
+
+    try {
+      const response = await fetch("http://localhost:3001/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to send message");
+      }
+
+      setSubmitted(true);
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      setSubmitError(error.message);
+    }
   };
 
   return (
@@ -121,6 +140,9 @@ const ContactSection = () => {
               <p className="text-green-500 text-center mt-4">
                 Thank you for your message! I will get back to you soon.
               </p>
+            )}
+            {submitError && (
+              <p className="text-red-500 text-center mt-4">{submitError}</p>
             )}
           </form>
         </Card>

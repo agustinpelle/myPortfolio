@@ -66,7 +66,7 @@ const HeroSection = ({ onContactClick }) => {
       >
         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 rounded-full border border-white/10 text-[#7FDBFF]">
           <Terminal size={16} className="animate-pulse" />
-          <span className="text-sm font-mono">Full Stack Developer</span>
+          <span className="text-sm font-mono">Backend Developer</span>
         </div>
 
         <h1 className="text-6xl md:text-8xl font-bold">

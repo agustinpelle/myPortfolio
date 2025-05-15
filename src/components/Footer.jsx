@@ -11,7 +11,7 @@ const Footer = () => {
             Agustín Pelle
           </h2>
           <p className="text-sm text-[#8EAAF8] italic">
-            Full Stack Developer · Cybersecurity Enthusiast
+            Backend Developer · Cybersecurity Enthusiast
           </p>
         </div>
 

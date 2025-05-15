@@ -4,7 +4,7 @@ import HeroSection from "./HeroSection";
 
 // Removed TypeScript interface Props
 
-const HeroWrapper = ({ onHeroLoad }) => {
+const HeroWrapper = ({ onHeroLoad, onContactClick }) => {
   const [showHero, setShowHero] = useState(false);
 
   const onFinish = () => {
@@ -29,7 +29,7 @@ const HeroWrapper = ({ onHeroLoad }) => {
     }
   }, [onHeroLoad]);
 
-  return showHero ? <HeroSection /> : <InitialLoader onFinish={onFinish} />;
+  return showHero ? <HeroSection onContactClick={onContactClick} /> : <InitialLoader onFinish={onFinish} />;
 };
 
 export default HeroWrapper;

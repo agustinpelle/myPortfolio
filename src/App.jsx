@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +32,9 @@ const App = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
 
+  // Agregamos la ref aquí
+  const contactRef = useRef(null);
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
@@ -48,7 +51,8 @@ const App = () => {
             <Sonner />
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<Index />} />
+                {/* Pasamos la ref a Index */}
+                <Route path="/" element={<Index contactRef={contactRef} />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>

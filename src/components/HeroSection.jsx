@@ -2,7 +2,7 @@ import { Github, Mail, Terminal } from "lucide-react";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 
-const HeroSection = () => {
+const HeroSection = ({ onContactClick }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [typedPart1, setTypedPart1] = useState("");
   const [typedPart2, setTypedPart2] = useState("");
@@ -20,10 +20,8 @@ const HeroSection = () => {
     let typeText1;
     let typeText2;
 
-    // Retraso para iniciar el tipeo de la primera parte
-    const delayBeforeTyping = 1000; // 1 segundo de retraso
+    const delayBeforeTyping = 1000;
     setTimeout(() => {
-      // Tipeo de la primera parte
       typeText1 = setInterval(() => {
         if (index1 < part1.length) {
           setTypedPart1((prev) => prev + part1.charAt(index1));
@@ -32,7 +30,6 @@ const HeroSection = () => {
           clearInterval(typeText1);
           setCursorVisible(false);
 
-          // Espera antes de iniciar la segunda parte
           setTimeout(() => {
             setCursorVisible(true);
             typeText2 = setInterval(() => {
@@ -44,12 +41,11 @@ const HeroSection = () => {
                 setCursorVisible(false);
               }
             }, 40);
-          }, 800); // Delay entre la primera y segunda línea
+          }, 800);
         }
       }, 40);
     }, delayBeforeTyping);
 
-    // Animación del cursor
     const cursorBlink = setInterval(() => {
       setCursorVisible((prev) => !prev);
     }, 530);
@@ -96,10 +92,14 @@ const HeroSection = () => {
         </div>
 
         <div className="flex gap-4 justify-center pt-4">
-          <Button className="gap-2 bg-[#2979FF] hover:bg-[#2962FF] transition-all duration-300 transform hover:scale-105">
+          <Button
+            className="gap-2 bg-[#2979FF] hover:bg-[#2962FF] transition-all duration-300 transform hover:scale-105"
+            onClick={onContactClick}
+          >
             <Mail size={20} />
             Contact Me
           </Button>
+
           <Button
             className="gap-2 border-[#B388EB]/30 bg-[#B388EB]/5 hover:bg-[#8EAAF8]/10 text-[#EAEAEA] transition-all duration-300 group"
             variant="outline"
@@ -108,7 +108,7 @@ const HeroSection = () => {
               size={20}
               className="mr-2 group-hover:text-[#8EAAF8] transition-colors"
             />
-            GitHub
+            <a href="https://github.com/agustinpelle">GitHub</a>
           </Button>
         </div>
       </div>

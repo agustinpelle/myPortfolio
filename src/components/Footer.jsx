@@ -18,7 +18,7 @@ const Footer = () => {
         {/* Social Icons */}
         <div className="flex justify-center md:justify-center gap-6 text-[#8EAAF8]">
           <a
-            href="https://github.com/arcv1337"
+            href="https://github.com/agustinpelle"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-[#E91E63] transition-colors"

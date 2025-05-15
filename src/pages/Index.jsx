@@ -11,6 +11,9 @@ const Index = () => {
   const isAutoScrolling = useRef(false);
   const [heroLoaded, setHeroLoaded] = useState(false);
 
+  // Ref para el contacto
+  const contactRef = useRef(null);
+
   useEffect(() => {
     const handleScroll = () => {
       if (!isAutoScrolling.current) {
@@ -64,6 +67,33 @@ const Index = () => {
     }
   };
 
+  // Función para hacer scroll suave al contacto
+  const scrollToContact = () => {
+    const element = document.getElementById("contact");
+    if (!element) return;
+
+    const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 800;
+    let startTime = null;
+
+    const easeOutCubic = (t) => (--t) * t * t + 1;
+
+    const animation = (currentTime) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const progress = Math.min(timeElapsed / duration, 1);
+      const easedProgress = easeOutCubic(progress);
+      window.scrollTo(0, startPosition + distance * easedProgress);
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  };
+
   return (
     <div className="min-h-screen bg-[#1E1E2F]">
       <div className="relative overflow-hidden">
@@ -84,7 +114,10 @@ const Index = () => {
             />
           ))}
         </div>
-        <HeroWrapper onHeroLoad={handleHeroLoad} />
+
+        {/* Pasamos scrollToContact como prop para que HeroWrapper pueda usarlo */}
+        <HeroWrapper onHeroLoad={handleHeroLoad} onContactClick={scrollToContact} />
+
         {heroLoaded && (
           <div
             onClick={handleScrollClick}
@@ -100,7 +133,10 @@ const Index = () => {
 
         <ProjectsSection />
         <SkillsSection />
-        <ContactSection />
+        {/* Le pasamos la ref al contenedor del contacto */}
+        <div ref={contactRef}>
+          <ContactSection />
+        </div>
       </div>
 
       {/* Agregamos el Footer aquí */}

@@ -62,8 +62,8 @@ const ContactSection = () => {
     <section className="py-20 px-4" id="contact">
       <div className="max-w-6xl mx-auto space-y-12">
         <div className="text-center space-y-4">
-          <h2 className="text-3xl md:text-4xl font-bold">Contactame</h2>
-          <p className="text-slate-600 max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold" section id="contact">Contactame</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
             Si tenes algun proyecto en mente lo podemos charlar.
           </p>
         </div>

@@ -14,7 +14,7 @@ const projects = [
   {
     title: "Portafolio",
     description: "Un portafolio interactivo que muestra mis habilidades técnicas y proyectos. Es esta página web. ",
-    image: "public/portfolio.jpg",
+    image: "/portfolio.jpg",
     techStack: ["JavaScript", "Tailwind CSS", "React", "Node.js"],
     demoLink: "#",
     githubLink: "https://github.com/arcv1337//",
@@ -22,7 +22,7 @@ const projects = [
   {
     title: "Distribuidora La Pluma",
     description: "Distribuidora de productos de ferreteria y repuestos para autos originales. Permite ver el catalogo de productos y realizar pedidos",
-    image: "public/la-pluma.jpg",
+    image: "/la-pluma.jpg",
     techStack: ["JavaScript", "React",],
     demoLink: "https://distribuidoralapluma.netlify.app",
     githubLink: "https://github.com/arcv1337/laPluma-distribuidora",

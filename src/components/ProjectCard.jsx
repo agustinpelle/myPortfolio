@@ -24,7 +24,7 @@ const ProjectCard = ({ title, description, image, techStack, demoLink, githubLin
             alt={title}
             className={`object-center w-full h-full transform transition-transform duration-500 ${
               isHovered ? 'scale-105' : 'scale-100'
-            }}`} // Desplaza horizontalmente solo el tercer card
+            } }`} // Desplaza horizontalmente solo el tercer card
           />
           <div
             className={`absolute inset-0 bg-gradient-to-t from-[#1E1E2F] to-transparent transition-opacity duration-300 ${

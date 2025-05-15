@@ -22,7 +22,7 @@ const ProjectCard = ({ title, description, image, techStack, demoLink, githubLin
           <img
             src={image}
             alt={title}
-            className={`object-center w-full h-full transform transition-transform duration-500 ${
+            className={`object-expand w-full h-full transform transition-transform duration-500 ${
               isHovered ? 'scale-105' : 'scale-100'
             } }`} // Desplaza horizontalmente solo el tercer card
           />

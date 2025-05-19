@@ -9,7 +9,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
     techStack: ["React", "Node.js", "JavaScript"],
     demoLink: "#",
-    githubLink: "https://github.com/arcv1337/BuyOrNot",
+    githubLink: "https://github.com/agustinpelle/BuyOrNot",
   },
   {
     title: "Portafolio",
@@ -17,7 +17,7 @@ const projects = [
     image: "/portfolio.jpg",
     techStack: ["JavaScript", "Tailwind CSS", "React", "Node.js"],
     demoLink: "#",
-    githubLink: "https://github.com/arcv1337//",
+    githubLink: "https://github.com/agustinpelle/",
   },
   {
     title: "Distribuidora La Pluma",
@@ -25,7 +25,7 @@ const projects = [
     image: "/la-pluma.jpg",
     techStack: ["JavaScript", "React",],
     demoLink: "https://distribuidoralapluma.netlify.app",
-    githubLink: "https://github.com/arcv1337/laPluma-distribuidora",
+    githubLink: "https://github.com/agustinpelle/laPlumaDistribuidora",
   },
 ];
 

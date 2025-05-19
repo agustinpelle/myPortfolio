@@ -1,44 +1,54 @@
 import { Github, Mail, Terminal } from "lucide-react";
 import { Button } from "./ui/button";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const HeroSection = ({ onContactClick }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [typedPart1, setTypedPart1] = useState("");
   const [typedPart2, setTypedPart2] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
+  const [typingFinished, setTypingFinished] = useState(false);
 
   const part1 =
-    "GGeek desde chico, siempre fui un entusiasta de la tecnología. Aprendí a moverme solo entre manuales, foros y tutoriales, buscando entender cómo funcionan las cosas por dentro.";
+    "Geek desde chico, siempre fui un entusiasta de la tecnología. Aprendí a moverme solo entre manuales, foros y tutoriales, buscando entender cómo funcionan las cosas por dentro.";
   const part2 =
-    "AActualmente estudio Tecnicatura Universitaria en Desarollo Web en la Universidad Nacional de La Matanza.";
+    "Actualmente estudio Tecnicatura Universitaria en Desarollo Web en la Universidad Nacional de La Matanza.";
+
+  const index1 = useRef(0);
+  const index2 = useRef(0);
+  const typeText1 = useRef(null);
+  const typeText2 = useRef(null);
+  const cursorBlink = useRef(null);
+  const timeout1 = useRef(null);
+  const timeout2 = useRef(null);
+  const hasTyped = useRef(false);
 
   useEffect(() => {
+    if (hasTyped.current) return; // Evitar reiniciar el efecto si ya se ejecutó
+    hasTyped.current = true;
+
     setIsVisible(true);
-    let index1 = 0;
-    let index2 = 0;
-    let typeText1;
-    let typeText2;
 
     const delayBeforeTyping = 1000;
-    setTimeout(() => {
-      typeText1 = setInterval(() => {
-        if (index1 < part1.length) {
-          setTypedPart1((prev) => prev + part1.charAt(index1));
-          index1++;
+    timeout1.current = setTimeout(() => {
+      typeText1.current = setInterval(() => {
+        if (index1.current < part1.length) {
+          setTypedPart1(part1.substring(0, index1.current + 1));
+          index1.current++;
         } else {
-          clearInterval(typeText1);
+          clearInterval(typeText1.current);
           setCursorVisible(false);
 
-          setTimeout(() => {
+          timeout2.current = setTimeout(() => {
             setCursorVisible(true);
-            typeText2 = setInterval(() => {
-              if (index2 < part2.length) {
-                setTypedPart2((prev) => prev + part2.charAt(index2));
-                index2++;
+            typeText2.current = setInterval(() => {
+              if (index2.current < part2.length) {
+                setTypedPart2(part2.substring(0, index2.current + 1));
+                index2.current++;
               } else {
-                clearInterval(typeText2);
+                clearInterval(typeText2.current);
                 setCursorVisible(false);
+                setTypingFinished(true);
               }
             }, 40);
           }, 800);
@@ -46,14 +56,16 @@ const HeroSection = ({ onContactClick }) => {
       }, 40);
     }, delayBeforeTyping);
 
-    const cursorBlink = setInterval(() => {
+    cursorBlink.current = setInterval(() => {
       setCursorVisible((prev) => !prev);
     }, 530);
 
     return () => {
-      clearInterval(typeText1);
-      clearInterval(typeText2);
-      clearInterval(cursorBlink);
+      clearTimeout(timeout1.current);
+      clearTimeout(timeout2.current);
+      clearInterval(typeText1.current);
+      clearInterval(typeText2.current);
+      clearInterval(cursorBlink.current);
     };
   }, []);
 
@@ -95,6 +107,7 @@ const HeroSection = ({ onContactClick }) => {
           <Button
             className="gap-2 bg-[#2979FF] hover:bg-[#2962FF] transition-all duration-300 transform hover:scale-105"
             onClick={onContactClick}
+            disabled={!typingFinished}
           >
             <Mail size={20} />
             Contact Me

@@ -16,8 +16,8 @@ const projects = [
     description: "Un portafolio interactivo que muestra mis habilidades técnicas y proyectos. Es esta página web. ",
     image: "/portfolio.jpg",
     techStack: ["JavaScript", "Tailwind CSS", "React", "Node.js"],
-    demoLink: "#",
-    githubLink: "https://github.com/agustinpelle/",
+    demoLink: "https://agustinpelle.netlify.app/",
+    githubLink: "https://github.com/agustinpelle/myPortfolio",
   },
   {
     title: "Distribuidora La Pluma",
